@@ -25,6 +25,10 @@
             console.log('Mensaje del servidor',payload);
         
         })
+
+        socket.on('msg-client-app',function(payload) { 
+            console.log('Mensaje del cliente flutter',payload);
+        })
     </script>
 </body>
 

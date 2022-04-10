@@ -13,4 +13,15 @@ io.on('connection', client => {
      });
 
      io.emit('message', {message: 'El servidor esta emitiendo un mensaje!'})
+
+     client.on('msg-client', (payload) => {
+        //io.emit('msg-socket-server', payload);
+        client.broadcast.emit('msg-socket-server', payload); // emite a todos menos al que lo emitio
+     })
+
+     client.on('msg-client-flutter', (payload) => {
+        //io.emit('msg-socket-server', payload);
+        client.broadcast.emit('msg-client-app', payload); // emite a todos menos al que lo emitio
+        console.log('Mensaje del cliente movil',payload);
+    })
   });
